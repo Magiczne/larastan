@@ -16,6 +16,7 @@ use ArrayObject;
 use Carbon\Carbon as BaseCarbon;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use function PHPStan\dumpType;
 
 class ModelPropertyExtension
 {
@@ -146,6 +147,7 @@ class ModelPropertyExtension
 
     public function testDateCast(User $user): ?BaseCarbon
     {
+        dumpType($user->email);
         $user->email_verified_at = now();
 
         return $user->email_verified_at;
